@@ -41,6 +41,13 @@ def ArbolMinimo_Prim(grafo: Grafo):
                     q.heappush((w,x), grafo.peso(w,x))
     return arbol
 
+def grados_grafo_no_dirigido(grafo: Grafo):
+    grados = {}
+    for v in grafo.obtener_vertices:
+        grados[v] = 0
+        for w in grafo.adyacentes(v):
+            grados[v] += 1
+    return grados
 
 #       Recorridos        #
 
@@ -97,28 +104,11 @@ def dfs_completo(grafo: Grafo):
 # Verificaciones #
 
 def es_conexo(grafo: Grafo):
-    _ , dist = bfs(grafo, grafo.vertice_aleatorio())
-    for v in grafo.obtener_vertices():
-        if dist[v] == None:
-            return False
-    return True
-
-def es_conexo(grafo: Grafo):
     visitados = set()
     v = grafo.vertice_aleatorio()
     visitados.add(v)
     _dfs(grafo, v, visitados, {}, {})
     return len(visitados) == grafo.cant()
-
-# son 2 maneras distintas, deja la q mas te guste
-
-def obtener_grados(grafo: Grafo):
-    grados = {}
-    for v in grafo.obtener_vertices:
-        grados[v] = 0
-        for w in grafo.adyacentes(v):
-            grados[v] += 1
-    return grados
 
 def vertices_grado_impar(grafo: Grafo):
     grados = obtener_grados(grafo)
