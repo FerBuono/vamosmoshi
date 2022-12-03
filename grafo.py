@@ -22,7 +22,7 @@ class Grafo:
                 w.pop(v)
         self.cant -= 1
         
-    def agregar_arista(self, v1, v2, p):
+    def agregar_arista(self, v1, v2, p = 1):
         if v1 not in self.dic or v2 not in self.dic:
             print("Un vertice no pertenece al grafo", v1, v2)
             return
