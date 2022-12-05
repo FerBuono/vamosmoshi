@@ -232,14 +232,3 @@ def vertice_grado_impar(grafo):
         if not grados[v]%2 == 0:
             return v
     return None
-        
-def obtener_aristas(grafo):
-    aristas = []
-    visitados = set()
-    for v in grafo.obtener_vertices():
-        for w in grafo.adyacentes(v):
-            if w not in visitados:
-                aristas.append((v,w))
-        visitados.add(v)
-    return aristas
-
