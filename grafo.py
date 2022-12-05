@@ -6,6 +6,9 @@ class Grafo:
         self.es_dirigido = es_dirigido
         self.cant = len(self.dic)
 
+    def pertenece(self, v):
+        return v in self.dic
+
     def agregar_vertice(self, v):
         if v in self.dic:
             return

@@ -1,0 +1,18 @@
+Doha,Rayan,2
+Doha,Al Wakrah,3
+Rayan,Doha,2
+Rayan,Zekreet,4
+Rayan,Jor,5
+Jor,Rayan,5
+Jor,Fuwayrit,3
+Al Wakrah,Doha,3
+Al Wakrah,Mesaleed,3
+Mesaleed,Al Wakrah,3
+Uum Bab,Dukhan,3
+Zekreet,Rayan,4
+Zekreet,Dukhan,1
+Al Ruwais,Fuwayrit,2
+Fuwayrit,Jor,3
+Fuwayrit,Al Ruwais,2
+Dukhan,Zekreet,1
+Dukhan,Uum Bab,3

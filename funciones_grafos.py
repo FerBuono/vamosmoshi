@@ -2,7 +2,7 @@ from grafo import Grafo
 import heapq
 from collections import deque
 
-def dijkstraMinimos(grafo: Grafo, origen, destino):
+def dijkstra_minimos(grafo, origen, destino):
     dist = {}
     padre = {}
     for v in grafo.obtener_vertices():
@@ -20,28 +20,53 @@ def dijkstraMinimos(grafo: Grafo, origen, destino):
             if nueva_dist < dist[w]:
                 dist[w] = nueva_dist
                 padre[w] = v
-                q.heappush((dist[w], w))
+                heapq.heappush(q, (dist[w], w))
     return padre, dist
 
-def ArbolMinimo_Prim(grafo: Grafo):
-    visitados = set()
-    q = heapq
-    v = grafo.vertice_aleatorio()
-    visitados.add(v)
-    for w in grafo.adyacentes(v):
-        q.heappush((v,w), grafo.peso(v,w))
+def arbol_tendido_minimo_prim(grafo):
+    origen = grafo.vertice_aleatorio()
     arbol = Grafo(False, grafo.obtener_vertices())
-    while not len(q) == 0:
-        (v,w), peso = q.heappop()
-        if w not in visitados:
-            arbol.agregar_arista(v,w,peso)
-            visitados.add(w)
-            for x in grafo.adyacentes(w):
-                if x not in visitados:
-                    q.heappush((w,x), grafo.peso(w,x))
-    return arbol
+    peso_total = 0
+    visitados = set()
+    visitados.add(origen)
+    q = []
+    for w in grafo.adyacentes(origen):
+        heapq.heappush(q, (grafo.peso(origen, w), origen, w))
+    while len(q) > 0:
+        peso, origen, destino = heapq.heappop(q)
+        if destino in visitados:
+            continue
+        visitados.add(destino)
+        arbol.agregar_arista(origen, destino, peso)
+        peso_total += peso
+        for w in grafo.adyacentes(destino):
+            if w not in visitados:
+                heapq.heappush(q, (grafo.peso(destino, w), destino, w))
+    return arbol, peso_total
 
-def obtener_grados(grafo: Grafo):
+
+def orden_topologico(grafo):
+    gr_ent = {}
+    resultado = []
+    q = deque()
+    for v in grafo:
+        gr_ent[v] = 0
+    for v in grafo:
+        for w in grafo.adyacentes(v):
+            gr_ent[w] += 1
+    for v in grafo:
+        if gr_ent[v] == 0:
+            q.appendleft(v)
+    while len(q) > 0:
+        v = q.pop()
+        resultado.append(v)
+        for w in grafo.adyacentes(v):
+            gr_ent[w] -= 1
+            if gr_ent[w] == 0:
+                q.appendleft(w)
+    return resultado
+
+def obtener_grados_salida(grafo):
     grados = {}
     for v in grafo.obtener_vertices():
         grados[v] = 0
@@ -51,11 +76,11 @@ def obtener_grados(grafo: Grafo):
 
 #       Recorridos        #
 
-def bfs(grafo: Grafo, origen):
+def bfs(grafo, origen):
     visitados = set()
     padre = {}
     orden = {}
-    cola = deque
+    cola = deque()
     cola.append(origen)
     visitados.add(origen)
     padre[origen] = None
@@ -70,7 +95,7 @@ def bfs(grafo: Grafo, origen):
                 cola.append(w)
     return padre, orden
 
-def _dfs(grafo: Grafo,v,visitados: set,padre, orden: dict):
+def _dfs(grafo, v, visitados, padre, orden):
     for w in grafo.adyacentes(v):
         if w not in visitados:
             padre[w] = v
@@ -79,7 +104,7 @@ def _dfs(grafo: Grafo,v,visitados: set,padre, orden: dict):
             _dfs(grafo,w,visitados,padre,orden)
     
 
-def dfs(grafo: Grafo, origen):
+def dfs(grafo, origen):
     padre = {}
     visitados = set()
     orden = {}
@@ -89,7 +114,7 @@ def dfs(grafo: Grafo, origen):
     _dfs(grafo,origen,visitados,padre,orden)
     return padre , orden
 
-def dfs_completo(grafo: Grafo):
+def dfs_completo(grafo):
     visitados = set()
     padre = {}
     orden = {}
@@ -103,15 +128,15 @@ def dfs_completo(grafo: Grafo):
 
 # Verificaciones #
 
-def es_conexo(grafo: Grafo):
+def es_conexo(grafo):
     visitados = set()
     v = grafo.vertice_aleatorio()
     visitados.add(v)
     _dfs(grafo, v, visitados, {}, {})
     return len(visitados) == grafo.cant
 
-def vertices_grado_impar(grafo: Grafo):
-    grados = obtener_grados(grafo)
+def vertices_grado_impar(grafo):
+    grados = obtener_grados_salida(grafo)
     impares = 0
     for v in grafo.obtener_vertices():
         if not (grados[v] % 2) == 0:
@@ -120,25 +145,23 @@ def vertices_grado_impar(grafo: Grafo):
 
 #   Ciclo   #
 
-def ciclo_euleriano(grafo):
-    ciclo = [] #Capaz hay q cambiar esto
+def ciclo_euleriano(grafo, origen):
+    ciclo = [] 
     if es_conexo(grafo) and vertices_grado_impar(grafo) == 0:
-        ciclo = hierholzer(grafo)
-    elif es_conexo and vertices_grado_impar == 2:
-        #ciclo = fleury(grafo)
+        ciclo = hierholzer(grafo, origen)
+    elif es_conexo and vertices_grado_impar(grafo) == 2:
         return ciclo
     else:
-        print("No presenta ciclo Euleriano")
+        return
     return ciclo
 
 #            HIERHOLZER            #
 
-def hierholzer(grafo: Grafo):
+def hierholzer(grafo, origen):
     camino = []
     aristas_visit = {}
-    v = grafo.vertice_aleatorio()
-    camino.append(v)
-    dfs_hierholzer(grafo, v, aristas_visit, camino)
+    camino.append(origen)
+    dfs_hierholzer(grafo, origen, aristas_visit, camino)
     i = 0
     while i < len(camino):
         nuevo_camino = [camino[i]]
@@ -150,8 +173,16 @@ def hierholzer(grafo: Grafo):
         # camino:       [v1, v2, v3, v4, v5, v6]
         # nuevo_camino:           \ [v3, v8, v9, v3]
         camino = camino[:i] + nuevo_camino + camino[i+1:]
+    return camino
+
+def dfs_hierholzer(grafo, v, aristas_visit, camino):
+    """
+    Encuentra un ciclo que comienza en v y termina en v sin utilizar las aristas
+    visitadas. Devuelve True si se encontró o False si no
+    """ 
+    return _dfs_hierholzer(grafo, v, aristas_visit, camino, v)
     
-def _dfs_hierholzer(grafo: Grafo, v, aristas_visit: dict, camino: list, origen):
+def _dfs_hierholzer(grafo, v, aristas_visit, camino, origen):
     adyacentes_v: set = aristas_visit.setdefault(v, set())
     aristas_adyacentes_sin_visitar = set(grafo.adyacentes(v)).difference(adyacentes_v)
     for w in aristas_adyacentes_sin_visitar:
@@ -169,16 +200,9 @@ def _dfs_hierholzer(grafo: Grafo, v, aristas_visit: dict, camino: list, origen):
 
     return False
 
-def dfs_hierholzer(grafo: Grafo, v, aristas_visit: dict, camino: list):
-    """
-    Encuentra un ciclo que comienza en v y termina en v sin utilizar las aristas
-    visitadas. Devuelve True si se encontró o False si no
-    """ 
-    return _dfs_hierholzer(grafo, v, aristas_visit, camino, v)
-
 #                   FLEURY                #
 
-def fleury(grafo: Grafo):
+def fleury(grafo):
     v = vertice_grado_impar(grafo)
     aristas = obtener_aristas(grafo)
     grafo_aux = grafo
@@ -188,7 +212,7 @@ def fleury(grafo: Grafo):
     dfs_fleury(grafo_aux, v, aristas_visit, camino)
     return camino
     
-def dfs_fleury(grafo: Grafo, v, aristas_visit: set, camino: list):
+def dfs_fleury(grafo, v, aristas_visit, camino):
     for w in grafo.adyacentes(v):
         if (v,w) not in aristas_visit:
             grafo.eliminar_arista(v,w)
@@ -203,8 +227,8 @@ def dfs_fleury(grafo: Grafo, v, aristas_visit: set, camino: list):
 
 # Auxiliares #
 
-def vertice_grado_impar(grafo: Grafo):
-    grados = obtener_grados(grafo)
+def vertice_grado_impar(grafo):
+    grados = obtener_grados_salida(grafo)
     for v in grafo.obtener_vertices():
         if not grados[v]%2 == 0:
             return v
@@ -212,7 +236,7 @@ def vertice_grado_impar(grafo: Grafo):
         
     
 
-def obtener_aristas(grafo: Grafo):
+def obtener_aristas(grafo):
     aristas = []
     visitados = set()
     for v in grafo.obtener_vertices():
