@@ -1,6 +1,9 @@
+import sys
 from grafo import Grafo
 import heapq
 from collections import deque
+
+sys.setrecursionlimit(100000)
 
 def dijkstra_minimos(grafo, origen, destino):
     dist = {}
@@ -133,7 +136,7 @@ def es_conexo(grafo):
     v = grafo.vertice_aleatorio()
     visitados.add(v)
     _dfs(grafo, v, visitados, {}, {})
-    return len(visitados) == grafo.cant
+    return len(visitados) == len(grafo)
 
 def vertices_grado_impar(grafo):
     grados = obtener_grados_salida(grafo)
@@ -154,6 +157,8 @@ def ciclo_euleriano(grafo, origen):
             ciclo, peso_ciclo = hierholzer(grafo, origen)
         elif impares == 2:
             ciclo, peso_ciclo = fleury(grafo)
+        else:
+            return None, None
         return ciclo, peso_ciclo
     else:
         return None, None

@@ -1,11 +1,13 @@
 from grafo import Grafo
 from funciones_grafos import dijkstra_minimos, bfs, orden_topologico, ciclo_euleriano, arbol_tendido_minimo_prim
-from funciones_auxiliares import escribir_kml
+from funciones_auxiliares import escribir_kml, escribir_pj
 
 def ir(entrada, grafo, sedes):
     origen = entrada[1]
     destino = entrada[2]
-    archivo_kml = entrada[3]
+    if not grafo.pertenece(origen) or not grafo.pertenece(destino):
+        return None, None
+    archivo_kml = entrada[3].strip()
     dic_padres, dic_distancias = dijkstra_minimos(grafo, origen, destino)
     if dic_distancias[destino] == float("inf"):
         return None, None
@@ -13,12 +15,12 @@ def ir(entrada, grafo, sedes):
     while destino != origen:
         camino.insert(0, dic_padres[destino])
         destino = dic_padres[destino]
-    escribir_kml(camino, sedes, archivo_kml, origen, destino)
-    return camino, dic_distancias[entrada[2]]
+    escribir_kml(camino, sedes, archivo=archivo_kml)
+    return camino, dic_distancias[entrada[2].strip()]
 
 def itinerario(entrada, grafo):
     grafo_orden = Grafo(True, [])
-    with open(entrada[1]) as archivo:
+    with open(entrada[1], "r") as archivo:
         for linea in archivo:
             linea = linea.rstrip("\n").split(",")
             grafo_orden.agregar_vertice(linea[0])
@@ -35,20 +37,17 @@ def itinerario(entrada, grafo):
 
 def viaje(entrada, grafo, sedes):
     origen = entrada[1]
-    archivo_kml = entrada[2]
+    if not grafo.pertenece(origen):
+        return None, None
+    archivo_kml = entrada[2].strip()
     ciclo, tiempo_total = ciclo_euleriano(grafo, origen)
     if ciclo == None:
         return None, None
-    escribir_kml(ciclo, sedes, archivo_kml, origen, None)
+    escribir_kml(ciclo, sedes, archivo=archivo_kml)
     return ciclo, tiempo_total
 
-def reducir_caminos(entrada, grafo):
-    archivo = entrada[1]
+def reducir_caminos(entrada, grafo, sedes):
+    archivo = entrada[1].strip()
     arbol, peso = arbol_tendido_minimo_prim(grafo)
-    visitados = {}
-    with open(archivo, "w") as f:
-        for v in arbol:
-            for w in arbol.adyacentes(v):
-                if w not in visitados:
-                    f.write(f'{v},{w},{arbol.peso(v,w)}\n')
+    escribir_pj(arbol, sedes, archivo)
     return peso

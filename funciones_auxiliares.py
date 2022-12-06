@@ -8,27 +8,24 @@ def ver_sedes(archivo_sedes):
         for cont, linea in enumerate(archivo):
             linea = linea.rstrip("\n").split(",")
             if cont == 0:
-                if cant_ciudades == 0:
-                    cant_ciudades += int(linea[0])
+                cant_ciudades += int(linea[0])
                 continue
             if 0 < cont <= cant_ciudades:
                 sedes[linea[0]] = (linea[1], linea[2])
-            elif cont > cant_ciudades + 1:
                 grafo_sedes.agregar_vertice(linea[0])
-                grafo_sedes.agregar_vertice(linea[1])
+            elif cont > cant_ciudades + 1:
                 grafo_sedes.agregar_arista(linea[0], linea[1], int(linea[2]))
     return sedes, grafo_sedes
 
 
-def escribir_kml(camino, sedes, archivo, origen, destino):
-    with open(archivo, "w") as f:
+def escribir_kml(camino, sedes, archivo):
+    with open(archivo, "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         f.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
         f.write('\t<Document>\n')
-        if destino:
-            f.write(f'\t\t<name>Ruta desde {origen} a {destino}</name>\n')
-        else:
-            f.write(f'\t\t<name>Ruta desde {origen}</name>\n')
+        f.write('\t\t<name>KML de ejemplo</name>\n')
+        f.write('\t\t<description>Un ejemplo introductorio para mostrar la sintaxis KML.</description>\n')
+        f.write('\n')
         for localidad in camino:
             f.write('\t\t<Placemark>\n')
             f.write(f'\t\t\t<name>{localidad}</name>\n')
@@ -46,3 +43,15 @@ def escribir_kml(camino, sedes, archivo, origen, destino):
             f.write('\n')
         f.write('\t</Document>\n')
         f.write('</kml>')
+
+def escribir_pj(arbol, sedes, archivo):
+    visitados = {}
+    with open(archivo, "w") as f:
+        f.write(f'{len(arbol)}\n')
+        for v in arbol:
+            f.write(f'{v},{sedes[v][0]},{sedes[v][1]}\n')
+        f.write(f'{arbol.cantidad_de_aristas()}\n')
+        for v in arbol:
+            for w in arbol.adyacentes(v):
+                if w not in visitados:
+                    f.write(f'{v},{w},{arbol.peso(v,w)}\n')

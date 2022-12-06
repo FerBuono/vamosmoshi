@@ -1,88 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
 	<Document>
-		<name>Ruta desde Mesaleed</name>
-		<Placemark>
-			<name>Mesaleed</name>
-			<Point>
-				<coordinates>51.566833, 24.979763</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Uum Bab</name>
-			<Point>
-				<coordinates>50.801382, 25.210765</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Dukhan</name>
-			<Point>
-				<coordinates>50.783242, 25.428096</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Zekreet</name>
-			<Point>
-				<coordinates>50.847566, 25.483899</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Rayan</name>
-			<Point>
-				<coordinates>51.420431, 25.286211</coordinates>
-			</Point>
-		</Placemark>
-
+		<name>KML de ejemplo</name>
 		<Placemark>
 			<name>Doha</name>
 			<Point>
 				<coordinates>51.534741, 25.286549</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Uum Bab</name>
-			<Point>
-				<coordinates>50.801382, 25.210765</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Fuwayrit</name>
-			<Point>
-				<coordinates>51.375433, 26.024136</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Doha</name>
-			<Point>
-				<coordinates>51.534741, 25.286549</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Jor</name>
-			<Point>
-				<coordinates>51.508375, 25.677971</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Zekreet</name>
-			<Point>
-				<coordinates>50.847566, 25.483899</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
-			<name>Mesaleed</name>
-			<Point>
-				<coordinates>51.566833, 24.979763</coordinates>
 			</Point>
 		</Placemark>
 
@@ -94,13 +17,6 @@
 		</Placemark>
 
 		<Placemark>
-			<name>Doha</name>
-			<Point>
-				<coordinates>51.534741, 25.286549</coordinates>
-			</Point>
-		</Placemark>
-
-		<Placemark>
 			<name>Mesaleed</name>
 			<Point>
 				<coordinates>51.566833, 24.979763</coordinates>
@@ -115,9 +31,23 @@
 		</Placemark>
 
 		<Placemark>
-			<name>Al Ruwais</name>
+			<name>Zekreet</name>
 			<Point>
-				<coordinates>51.200235, 26.131422</coordinates>
+				<coordinates>50.847566, 25.483899</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Mesaleed</name>
+			<Point>
+				<coordinates>51.566833, 24.979763</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Doha</name>
+			<Point>
+				<coordinates>51.534741, 25.286549</coordinates>
 			</Point>
 		</Placemark>
 
@@ -125,6 +55,62 @@
 			<name>Fuwayrit</name>
 			<Point>
 				<coordinates>51.375433, 26.024136</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Dukhan</name>
+			<Point>
+				<coordinates>50.783242, 25.428096</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Uum Bab</name>
+			<Point>
+				<coordinates>50.801382, 25.210765</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Mesaleed</name>
+			<Point>
+				<coordinates>51.566833, 24.979763</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Rayan</name>
+			<Point>
+				<coordinates>51.420431, 25.286211</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Zekreet</name>
+			<Point>
+				<coordinates>50.847566, 25.483899</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Fuwayrit</name>
+			<Point>
+				<coordinates>51.375433, 26.024136</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Al Ruwais</name>
+			<Point>
+				<coordinates>51.200235, 26.131422</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Dukhan</name>
+			<Point>
+				<coordinates>50.783242, 25.428096</coordinates>
 			</Point>
 		</Placemark>
 
@@ -143,9 +129,23 @@
 		</Placemark>
 
 		<Placemark>
-			<name>Dukhan</name>
+			<name>Jor</name>
 			<Point>
-				<coordinates>50.783242, 25.428096</coordinates>
+				<coordinates>51.508375, 25.677971</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Doha</name>
+			<Point>
+				<coordinates>51.534741, 25.286549</coordinates>
+			</Point>
+		</Placemark>
+
+		<Placemark>
+			<name>Uum Bab</name>
+			<Point>
+				<coordinates>50.801382, 25.210765</coordinates>
 			</Point>
 		</Placemark>
 
@@ -171,63 +171,27 @@
 		</Placemark>
 
 		<Placemark>
-			<name>Mesaleed</name>
+			<name>Doha</name>
 			<Point>
-				<coordinates>51.566833, 24.979763</coordinates>
+				<coordinates>51.534741, 25.286549</coordinates>
 			</Point>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.566833, 24.979763 50.801382, 25.210765</coordinates>
+				<coordinates>51.534741, 25.286549 51.598641, 25.161182</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>50.801382, 25.210765 50.783242, 25.428096</coordinates>
+				<coordinates>51.598641, 25.161182 51.566833, 24.979763</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>50.783242, 25.428096 50.847566, 25.483899</coordinates>
-			</LineString>
-		</Placemark>
-
-		<Placemark>
-			<LineString>
-				<coordinates>50.847566, 25.483899 51.420431, 25.286211</coordinates>
-			</LineString>
-		</Placemark>
-
-		<Placemark>
-			<LineString>
-				<coordinates>51.420431, 25.286211 51.534741, 25.286549</coordinates>
-			</LineString>
-		</Placemark>
-
-		<Placemark>
-			<LineString>
-				<coordinates>51.534741, 25.286549 50.801382, 25.210765</coordinates>
-			</LineString>
-		</Placemark>
-
-		<Placemark>
-			<LineString>
-				<coordinates>50.801382, 25.210765 51.375433, 26.024136</coordinates>
-			</LineString>
-		</Placemark>
-
-		<Placemark>
-			<LineString>
-				<coordinates>51.375433, 26.024136 51.534741, 25.286549</coordinates>
-			</LineString>
-		</Placemark>
-
-		<Placemark>
-			<LineString>
-				<coordinates>51.534741, 25.286549 51.508375, 25.677971</coordinates>
+				<coordinates>51.566833, 24.979763 51.508375, 25.677971</coordinates>
 			</LineString>
 		</Placemark>
 
@@ -245,49 +209,55 @@
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.566833, 24.979763 51.598641, 25.161182</coordinates>
+				<coordinates>51.566833, 24.979763 51.534741, 25.286549</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.598641, 25.161182 51.534741, 25.286549</coordinates>
+				<coordinates>51.534741, 25.286549 51.375433, 26.024136</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.534741, 25.286549 51.566833, 24.979763</coordinates>
+				<coordinates>51.375433, 26.024136 50.783242, 25.428096</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.566833, 24.979763 51.508375, 25.677971</coordinates>
+				<coordinates>50.783242, 25.428096 50.801382, 25.210765</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.508375, 25.677971 51.200235, 26.131422</coordinates>
+				<coordinates>50.801382, 25.210765 51.566833, 24.979763</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.200235, 26.131422 51.375433, 26.024136</coordinates>
+				<coordinates>51.566833, 24.979763 51.420431, 25.286211</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.375433, 26.024136 50.847566, 25.483899</coordinates>
+				<coordinates>51.420431, 25.286211 50.847566, 25.483899</coordinates>
 			</LineString>
 		</Placemark>
 
 		<Placemark>
 			<LineString>
-				<coordinates>50.847566, 25.483899 51.200235, 26.131422</coordinates>
+				<coordinates>50.847566, 25.483899 51.375433, 26.024136</coordinates>
+			</LineString>
+		</Placemark>
+
+		<Placemark>
+			<LineString>
+				<coordinates>51.375433, 26.024136 51.200235, 26.131422</coordinates>
 			</LineString>
 		</Placemark>
 
@@ -299,7 +269,37 @@
 
 		<Placemark>
 			<LineString>
-				<coordinates>50.783242, 25.428096 51.375433, 26.024136</coordinates>
+				<coordinates>50.783242, 25.428096 50.847566, 25.483899</coordinates>
+			</LineString>
+		</Placemark>
+
+		<Placemark>
+			<LineString>
+				<coordinates>50.847566, 25.483899 51.200235, 26.131422</coordinates>
+			</LineString>
+		</Placemark>
+
+		<Placemark>
+			<LineString>
+				<coordinates>51.200235, 26.131422 51.508375, 25.677971</coordinates>
+			</LineString>
+		</Placemark>
+
+		<Placemark>
+			<LineString>
+				<coordinates>51.508375, 25.677971 51.534741, 25.286549</coordinates>
+			</LineString>
+		</Placemark>
+
+		<Placemark>
+			<LineString>
+				<coordinates>51.534741, 25.286549 50.801382, 25.210765</coordinates>
+			</LineString>
+		</Placemark>
+
+		<Placemark>
+			<LineString>
+				<coordinates>50.801382, 25.210765 51.375433, 26.024136</coordinates>
 			</LineString>
 		</Placemark>
 
@@ -317,7 +317,7 @@
 
 		<Placemark>
 			<LineString>
-				<coordinates>51.420431, 25.286211 51.566833, 24.979763</coordinates>
+				<coordinates>51.420431, 25.286211 51.534741, 25.286549</coordinates>
 			</LineString>
 		</Placemark>
 
