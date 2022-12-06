@@ -69,14 +69,6 @@ def orden_topologico(grafo):
                 q.appendleft(w)
     return resultado
 
-def obtener_grados_salida(grafo):
-    grados = {}
-    for v in grafo.obtener_vertices():
-        grados[v] = 0
-        for w in grafo.adyacentes(v):
-            grados[v] += 1
-    return grados
-
 #       Recorridos        #
 
 def bfs(grafo, origen):
@@ -237,3 +229,11 @@ def vertice_grado_impar(grafo):
         if not grados[v]%2 == 0:
             return v
     return None
+
+def obtener_grados_salida(grafo):
+    grados = {}
+    for v in grafo.obtener_vertices():
+        grados[v] = 0
+        for w in grafo.adyacentes(v):
+            grados[v] += 1
+    return grados
