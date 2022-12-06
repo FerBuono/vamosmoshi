@@ -3,6 +3,7 @@ import heapq
 from collections import deque
 from funciones_grafos import hierholzer
 from funciones_grafos import fleury
+from funciones_grafos import arbol_tendido_minimo_prim
 
 
 ##      PARA HIERHOLZER
@@ -63,7 +64,7 @@ def crear_grafo():
     
 def main():
     g = crear_grafo()
-    camino, peso = hierholzer(g, "Arg")
+    camino, peso = arbol_tendido_minimo_prim(g)
     #camino, peso = fleury(g)
     print(camino)
     print(peso)
