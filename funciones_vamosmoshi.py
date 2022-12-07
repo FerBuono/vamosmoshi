@@ -39,10 +39,10 @@ def viaje(entrada, grafo, sedes):
     origen = entrada[1]
     if not grafo.pertenece(origen):
         return None, None
-    archivo_kml = entrada[2].strip()
     ciclo, tiempo_total = ciclo_euleriano(grafo, origen)
     if ciclo == None:
         return None, None
+    archivo_kml = entrada[2].strip()
     escribir_kml(ciclo, sedes, archivo=archivo_kml)
     return ciclo, tiempo_total
 

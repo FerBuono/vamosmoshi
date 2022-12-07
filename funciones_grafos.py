@@ -141,16 +141,12 @@ def vertices_grado_impar(grafo):
 #   Ciclo   #
 
 def ciclo_euleriano(grafo: Grafo, origen):
-    ciclo = []
-    peso_ciclo = 0 
-    if es_conexo(grafo) and not len(grafo.obtener_vertices()) <= 1:
+    if es_conexo(grafo) and grafo.pertenece(origen) and len(grafo.obtener_vertices()) > 1:
         impares = vertices_grado_impar(grafo)
         if impares == 0:
-            ciclo, peso_ciclo = hierholzer(grafo, origen)
-            return ciclo, peso_ciclo
+            return hierholzer(grafo, origen)
         elif impares == 2:
-            ciclo, peso_ciclo = fleury(grafo)
-            return ciclo, peso_ciclo
+            return fleury(grafo)
     return None, None
 
 #            HIERHOLZER            #
