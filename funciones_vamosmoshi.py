@@ -42,6 +42,11 @@ def viaje(entrada, grafo, sedes):
     ciclo, tiempo_total = ciclo_euleriano(grafo, origen)
     if ciclo == None:
         return None, None
+    aristas = 0
+    for _ in range(len(ciclo) - 1):
+        aristas += 1
+    if aristas != grafo.cantidad_de_aristas():
+        return None, None
     archivo_kml = entrada[2].strip()
     escribir_kml(ciclo, sedes, archivo=archivo_kml)
     return ciclo, tiempo_total

@@ -61,7 +61,10 @@ class Grafo:
         cont = 0
         for v in self.dic:
             cont += len(self.dic[v])
-        return cont
+        if self.es_dirigido:
+            return cont
+        else:
+            return cont//2
 
     def __iter__(self):
         return iter(self.dic)

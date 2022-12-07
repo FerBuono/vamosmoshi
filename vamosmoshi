@@ -14,35 +14,35 @@ def main():
         if entrada[0] == "ir":
             camino, tiempo = ir(entrada, grafo_sedes, sedes)
             if camino == None:
-                print("No se encontro recorrido", file=sys.stdout)
+                print("No se encontro recorrido")
                 continue
-            print(" -> ".join(camino), file=sys.stdout)
-            print("Tiempo total:", tiempo, file=sys.stdout)
+            print(" -> ".join(camino))
+            print("Tiempo total:", tiempo)
 
         elif entrada[0] == "itinerario":
             camino = itinerario(entrada, grafo_sedes)
             if camino == None:
-                print("No se encontro recorrido", file=sys.stdout)
+                print("No se encontro recorrido")
                 continue
-            print(" -> ".join(camino), file=sys.stdout)
+            print(" -> ".join(camino))
             
         elif entrada[0] == "viaje":
             camino, tiempo = viaje(entrada, grafo_sedes, sedes)
             if camino == None:
-                print("No se encontro recorrido", file=sys.stdout)
+                print("No se encontro recorrido")
                 continue
-            print(" -> ".join(camino), file=sys.stdout)
-            print("Tiempo total:", tiempo, file=sys.stdout)
+            print(" -> ".join(camino))
+            print("Tiempo total:", tiempo)
 
         elif entrada[0] == "reducir_caminos":
             peso = reducir_caminos(entrada, grafo_sedes, sedes)
-            print("Peso total:", peso, file=sys.stdout)
+            print("Peso total:", peso)
 
         elif entrada[0] == "salir":
             break
 
         else:
-            print("Entrada erronea", file=sys.stdout)
+            print("Entrada erronea")
 
 
 main()
