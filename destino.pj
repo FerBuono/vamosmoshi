@@ -12,19 +12,10 @@ Uum Bab,25.210765,50.801382
 9
 Doha,Rayan,2
 Doha,Al Wakrah,3
-Rayan,Zekreet,4
-Rayan,Doha,2
 Rayan,Jor,5
-Al Wakrah,Doha,3
+Rayan,Zekreet,4
 Al Wakrah,Mesaleed,3
-Jor,Rayan,5
 Jor,Fuwayrit,3
-Mesaleed,Al Wakrah,3
 Al Ruwais,Fuwayrit,2
 Dukhan,Zekreet,1
 Dukhan,Uum Bab,3
-Fuwayrit,Jor,3
-Fuwayrit,Al Ruwais,2
-Zekreet,Dukhan,1
-Zekreet,Rayan,4
-Uum Bab,Dukhan,3
