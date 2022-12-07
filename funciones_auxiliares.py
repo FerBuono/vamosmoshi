@@ -1,6 +1,4 @@
 from grafo import Grafo
-from xml.etree.ElementTree import Element, SubElement, tostring
-import simplekml
 
 def ver_sedes(archivo_sedes):
     sedes = {}
@@ -21,30 +19,29 @@ def ver_sedes(archivo_sedes):
 
 
 def escribir_kml(camino, sedes, archivo):
-    kml = Element('kml', xmlns='http://www.opengis.net/kml/2.2')
-    document = SubElement(kml, 'Document')
-    for localidad in camino:
-        placemark = SubElement(document, 'Placemark')
-        name = SubElement(placemark, 'name')
-        name.text = localidad
-        point = SubElement(placemark, 'Point')
-        coordinates = SubElement(point, 'coordinates')
-        coordinates.text = f'{sedes[localidad][1]}, {sedes[localidad][0]}'
-    for i in range(len(camino)-1):
-        placemark = SubElement(document, 'Placemark')
-        line = SubElement(placemark, 'LineString')
-        coordinates = SubElement(line, 'coordinates')
-        coordinates.text = f'{sedes[camino[i]][1]}, {sedes[camino[i]][0]} {sedes[camino[i+1]][1]}, {sedes[camino[i+1]][0]}'
-    kml = tostring(kml, encoding='unicode')
-    with open(archivo, "w") as f:
-        f.write(kml)
-    #kml = simplekml.Kml()
-    #for localidad in camino:
-    #    placemark = kml.newpoint(name=localidad, coords=[(sedes[localidad][1], sedes[localidad][0])])
-    #for i in range(len(camino)-1):
-    #    lin = kml.newlinestring(coords=[(sedes[camino[i]][1], sedes[camino[i]][0]), (sedes[camino[i+1]][1], sedes[camino[i+1]][0])])
-    #kml.save(archivo)
-
+    with open(archivo, "w", encoding="utf-8") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write('<kml xmlns="http://earth.google.com/kml/2.1">\n')
+        f.write('\t<Document>\n')
+        f.write('\t\t<name>Prueba</name>\n')
+        f.write('\n')
+        for localidad in camino:
+            f.write('\t\t<Placemark>\n')
+            f.write(f'\t\t\t<name>{localidad}</name>\n')
+            f.write('\t\t\t<Point>\n')
+            f.write(f'\t\t\t\t<coordinates>{sedes[localidad][0]}, {sedes[localidad][1]}</coordinates>\n')
+            f.write('\t\t\t</Point>\n')
+            f.write('\t\t</Placemark>\n')
+            f.write('\n')
+        for i in range(len(camino)-1):
+            f.write('\t\t<Placemark>\n')
+            f.write('\t\t\t<LineString>\n')
+            f.write(f'\t\t\t\t<coordinates>{sedes[camino[i]][0]}, {sedes[camino[i]][1]} {sedes[camino[i+1]][0]}, {sedes[camino[i+1]][1]}</coordinates>\n')
+            f.write('\t\t\t</LineString>\n')
+            f.write('\t\t</Placemark>\n')
+            f.write('\n')
+        f.write('\t</Document>\n')
+        f.write('</kml>')
 
 def escribir_pj(arbol, sedes, archivo):
     visitados = {}
