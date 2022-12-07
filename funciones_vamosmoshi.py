@@ -15,7 +15,7 @@ def ir(entrada, grafo, sedes):
     while destino != origen:
         camino.insert(0, dic_padres[destino])
         destino = dic_padres[destino]
-    escribir_kml(camino, sedes, archivo=archivo_kml)
+    escribir_kml(grafo, camino, sedes, archivo=archivo_kml)
     return camino, dic_distancias[entrada[2].strip()]
 
 def itinerario(entrada, grafo):
@@ -48,7 +48,7 @@ def viaje(entrada, grafo, sedes):
     if aristas != grafo.cantidad_de_aristas():
         return None, None
     archivo_kml = entrada[2].strip()
-    escribir_kml(ciclo, sedes, archivo=archivo_kml)
+    escribir_kml(grafo, ciclo, sedes, archivo=archivo_kml)
     return ciclo, tiempo_total
 
 def reducir_caminos(entrada, grafo, sedes):

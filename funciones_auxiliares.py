@@ -18,14 +18,16 @@ def ver_sedes(archivo_sedes):
     return sedes, grafo_sedes
 
 
-def escribir_kml(camino, sedes, archivo):
+def escribir_kml(grafo, camino, sedes, archivo):
+    if len(camino) > len(grafo):
+        camino = set(camino)
     with open(archivo, "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         f.write('<kml xmlns="http://earth.google.com/kml/2.1">\n')
         f.write('\t<Document>\n')
         f.write('\t\t<name>Prueba</name>\n')
         f.write('\n')
-        for localidad in set(camino):
+        for localidad in camino:
             f.write('\t\t<Placemark>\n')
             f.write(f'\t\t\t<name>{localidad}</name>\n')
             f.write('\t\t\t<Point>\n')
