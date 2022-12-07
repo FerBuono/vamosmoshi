@@ -19,8 +19,7 @@ def ver_sedes(archivo_sedes):
 
 
 def escribir_kml(grafo, camino, sedes, archivo):
-    if len(camino) > len(grafo):
-        camino = set(camino)
+    visitados = {}
     with open(archivo, "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         f.write('<kml xmlns="http://earth.google.com/kml/2.1">\n')
@@ -28,13 +27,15 @@ def escribir_kml(grafo, camino, sedes, archivo):
         f.write('\t\t<name>Prueba</name>\n')
         f.write('\n')
         for localidad in camino:
-            f.write('\t\t<Placemark>\n')
-            f.write(f'\t\t\t<name>{localidad}</name>\n')
-            f.write('\t\t\t<Point>\n')
-            f.write(f'\t\t\t\t<coordinates>{sedes[localidad][0]}, {sedes[localidad][1]}</coordinates>\n')
-            f.write('\t\t\t</Point>\n')
-            f.write('\t\t</Placemark>\n')
-            f.write('\n')
+            if localidad not in visitados:
+                f.write('\t\t<Placemark>\n')
+                f.write(f'\t\t\t<name>{localidad}</name>\n')
+                f.write('\t\t\t<Point>\n')
+                f.write(f'\t\t\t\t<coordinates>{sedes[localidad][0]}, {sedes[localidad][1]}</coordinates>\n')
+                f.write('\t\t\t</Point>\n')
+                f.write('\t\t</Placemark>\n')
+                f.write('\n')
+                visitados[localidad] = True
         for i in range(len(camino)-1):
             f.write('\t\t<Placemark>\n')
             f.write('\t\t\t<LineString>\n')
